@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "DM Serif Display", serif;
+  --font-mono:  "DM Mono", monospace;
+  --font-sans:  "DM Sans", sans-serif;
+
+  --color-bg:     #f7f5f0;
+  --color-ink:    #1a1714;
+  --color-muted:  #7a7570;
+  --color-accent: #d4541a;
+  --color-border: #e0dcd5;
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Hero entrance animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.anim-1 { opacity: 0; animation: fadeUp 0.6s 0.2s ease forwards; }
+.anim-2 { opacity: 0; animation: fadeUp 0.7s 0.35s ease forwards; }
+.anim-3 { opacity: 0; animation: fadeUp 0.7s 0.5s ease forwards; }
+.anim-4 { opacity: 0; animation: fadeIn 0.8s 1s ease forwards; }
+
+/* ── Skill bar animation ── */
+.skill-fill {
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.8s ease;
+}
+.skill-item.visible .skill-fill {
+  transform: scaleX(1);
+}
