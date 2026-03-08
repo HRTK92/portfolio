@@ -18,35 +18,35 @@ import '../styles/global.css'
   <body class='font-sans font-light text-ink bg-bg leading-relaxed'>
     <!-- NAV -->
     <nav
-      class='fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-12 py-5 bg-bg/85 backdrop-blur-md border-b border-border'
+      class='fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-8 lg:px-12 py-4 sm:py-5 bg-bg/85 backdrop-blur-md border-b border-border'
     >
       <a href='#' class='font-mono text-xs tracking-widest text-accent no-underline'>Takuho.dev</a>
-      <ul class='flex gap-10 list-none'>
+      <ul class='flex gap-4 sm:gap-8 lg:gap-10 list-none whitespace-nowrap'>
         <li>
           <a
             href='#about'
-            class='text-xs tracking-widest uppercase text-muted hover:text-ink transition-colors no-underline'
+            class='text-[10px] sm:text-xs tracking-widest uppercase text-muted hover:text-ink transition-colors no-underline'
             >About</a
           >
         </li>
         <li>
           <a
             href='#skills'
-            class='text-xs tracking-widest uppercase text-muted hover:text-ink transition-colors no-underline'
+            class='text-[10px] sm:text-xs tracking-widest uppercase text-muted hover:text-ink transition-colors no-underline'
             >Skills</a
           >
         </li>
         <li>
           <a
             href='#works'
-            class='text-xs tracking-widest uppercase text-muted hover:text-ink transition-colors no-underline'
+            class='text-[10px] sm:text-xs tracking-widest uppercase text-muted hover:text-ink transition-colors no-underline'
             >Works</a
           >
         </li>
         <li>
           <a
             href='#contact'
-            class='text-xs tracking-widest uppercase text-muted hover:text-ink transition-colors no-underline'
+            class='text-[10px] sm:text-xs tracking-widest uppercase text-muted hover:text-ink transition-colors no-underline'
             >Contact</a
           >
         </li>
@@ -56,17 +56,21 @@ import '../styles/global.css'
     <!-- HERO -->
     <section
       id='hero'
-      class='min-h-screen flex flex-col justify-end px-12 pt-32 pb-20 border-b border-border relative'
+      class='min-h-screen flex flex-col justify-end px-4 sm:px-8 lg:px-12 pt-28 sm:pt-32 pb-16 sm:pb-20 border-b border-border relative'
     >
       <p class='anim-1 font-mono text-xs tracking-widest text-accent uppercase mb-6'>
         University Student &amp; Developer
       </p>
-      <h1 class='anim-2 font-serif text-8xl leading-none tracking-tight max-w-xl'>
+      <h1
+        class='anim-2 font-serif text-5xl sm:text-7xl lg:text-8xl leading-none tracking-tight max-w-xl'
+      >
         I'm <em class='text-accent not-italic'>Takuho</em>.
       </h1>
-      <p class='anim-3 mt-10 text-base text-muted max-w-xs'>OSS lover. Learner. Builder.</p>
+      <p class='anim-3 mt-8 sm:mt-10 text-sm sm:text-base text-muted max-w-xs'>
+        OSS lover. Learner. Builder.
+      </p>
       <div
-        class='anim-4 absolute bottom-10 right-12 font-mono text-xs tracking-widest text-muted flex flex-col items-center gap-3'
+        class='anim-4 hidden sm:flex absolute bottom-10 right-8 lg:right-12 font-mono text-xs tracking-widest text-muted flex-col items-center gap-3'
         style='writing-mode:vertical-rl'
       >
         <span class='block w-px h-12 bg-border'></span>Scroll
@@ -74,15 +78,18 @@ import '../styles/global.css'
     </section>
 
     <!-- ABOUT -->
-    <section id='about' class='px-12 py-28 border-b border-border'>
+    <section
+      id='about'
+      class='px-4 sm:px-8 lg:px-12 py-20 sm:py-24 lg:py-28 border-b border-border'
+    >
       <p
-        class='reveal font-mono text-xs tracking-widest text-accent uppercase mb-14 flex items-center gap-4'
+        class='reveal font-mono text-xs tracking-widest text-accent uppercase mb-10 sm:mb-14 flex items-center gap-4'
       >
         About <span class='block h-px w-14 bg-accent opacity-40'></span>
       </p>
-      <div class='grid grid-cols-2 gap-20 items-start'>
+      <div class='grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start'>
         <div class='reveal'>
-          <h2 class='font-serif text-5xl leading-tight tracking-tight'>
+          <h2 class='font-serif text-4xl sm:text-5xl leading-tight tracking-tight'>
             A bit<br />about me.
           </h2>
           <div class='mt-10 flex flex-col gap-3'>
@@ -101,7 +108,7 @@ import '../styles/global.css'
             </div>
           </div>
         </div>
-        <div class='reveal text-sm text-muted leading-loose space-y-5'>
+        <div class='reveal text-sm text-muted leading-loose space-y-5 max-w-none md:max-w-xl'>
           <p>
             中学生でプログラミングに出会い、Webアプリやツール開発にはまっています。コードを書くことで、アイデアを形にできる楽しさを感じています。
           </p>
@@ -117,13 +124,16 @@ import '../styles/global.css'
     </section>
 
     <!-- SKILLS -->
-    <section id='skills' class='px-12 py-28 border-b border-border'>
+    <section
+      id='skills'
+      class='px-4 sm:px-8 lg:px-12 py-20 sm:py-24 lg:py-28 border-b border-border'
+    >
       <p
-        class='reveal font-mono text-xs tracking-widest text-accent uppercase mb-14 flex items-center gap-4'
+        class='reveal font-mono text-xs tracking-widest text-accent uppercase mb-10 sm:mb-14 flex items-center gap-4'
       >
         Skills <span class='block h-px w-14 bg-accent opacity-40'></span>
       </p>
-      <div class='grid grid-cols-3 gap-px bg-border border border-border'>
+      <div class='grid grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border'>
         <div class='skill-item reveal bg-bg hover:bg-white transition-colors p-7'>
           <div class='font-mono text-sm mb-2'>Python</div>
           <div class='h-0.5 bg-border rounded-full overflow-hidden'>
@@ -169,13 +179,16 @@ import '../styles/global.css'
     </section>
 
     <!-- WORKS -->
-    <section id='works' class='px-12 py-28 border-b border-border'>
+    <section
+      id='works'
+      class='px-4 sm:px-8 lg:px-12 py-20 sm:py-24 lg:py-28 border-b border-border'
+    >
       <p
-        class='reveal font-mono text-xs tracking-widest text-accent uppercase mb-14 flex items-center gap-4'
+        class='reveal font-mono text-xs tracking-widest text-accent uppercase mb-10 sm:mb-14 flex items-center gap-4'
       >
         Works <span class='block h-px w-14 bg-accent opacity-40'></span>
       </p>
-      <div class='grid grid-cols-3 gap-6'>
+      <div class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
         <div
           class='reveal border border-border bg-white p-8 hover:-translate-y-1 hover:shadow-xl transition-all duration-300'
         >
@@ -231,16 +244,19 @@ import '../styles/global.css'
     </section>
 
     <!-- CONTACT -->
-    <section id='contact' class='px-12 py-28 flex flex-col items-center text-center gap-8'>
+    <section
+      id='contact'
+      class='px-4 sm:px-8 lg:px-12 py-20 sm:py-24 lg:py-28 flex flex-col items-center text-center gap-8'
+    >
       <p
         class='reveal self-start font-mono text-xs tracking-widest text-accent uppercase flex items-center gap-4'
       >
         Contact <span class='block h-px w-14 bg-accent opacity-40'></span>
       </p>
-      <h2 class='reveal font-serif text-7xl leading-tight tracking-tight'>
+      <h2 class='reveal font-serif text-4xl sm:text-6xl lg:text-7xl leading-tight tracking-tight'>
         一緒に何か<br /><em class='text-accent not-italic'>作りませんか。</em>
       </h2>
-      <p class='reveal text-base text-muted max-w-xs'>お気軽にご連絡ください。</p>
+      <p class='reveal text-sm sm:text-base text-muted max-w-xs'>お気軽にご連絡ください。</p>
       <div class='reveal flex gap-8 mt-4 flex-wrap justify-center'>
         <a
           href='mailto:hrtk92@proton.me'
@@ -296,7 +312,7 @@ import '../styles/global.css'
 
     <!-- FOOTER -->
     <footer
-      class='px-12 py-6 flex justify-between items-center border-t border-border font-mono text-xs text-muted tracking-wide'
+      class='px-4 sm:px-8 lg:px-12 py-6 flex flex-col sm:flex-row gap-2 sm:gap-0 justify-between items-center border-t border-border font-mono text-xs text-muted tracking-wide'
     >
       <span>© 2026 HRTK92</span>
       <span>assisted by Claude</span>
