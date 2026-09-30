@@ -4,28 +4,84 @@ interface Props {
 	description: string;
 	ogImage?: string;
 	canonical?: string;
+	type?: 'website' | 'article';
 }
+
 const {
 	title,
 	description,
-	ogImage = '/og-default.png',
+	ogImage = '/og.svg',
 	canonical = Astro.url.href,
+	type = 'website',
 } = Astro.props;
+
+const siteUrl = Astro.site ?? new URL('https://me.hrtk92.dev');
+const imageUrl = new URL(ogImage, siteUrl).href;
+const canonicalUrl = new URL(canonical, siteUrl).href;
+
+// 構造化データ (JSON-LD)
+const personSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Takuho',
+	alternateName: ['HRTK92', 'hrtk92'],
+	url: siteUrl.href,
+	image: imageUrl,
+	jobTitle: 'Student Developer',
+	description: 'Developer crafting modern web experiences & OSS.',
+	sameAs: ['https://github.com/HRTK92'],
+	knowsAbout: [
+		'TypeScript',
+		'JavaScript',
+		'Python',
+		'React',
+		'Next.js',
+		'Astro',
+		'Cloudflare Workers',
+		'Cloudflare D1',
+		'Web Development',
+		'Open Source Software',
+	],
+};
+
+const webSiteSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebSite',
+	name: 'hrtk92.dev',
+	alternateName: ['HRTK92 Portfolio', 'Takuho Portfolio'],
+	url: siteUrl.href,
+	author: {
+		'@type': 'Person',
+		name: 'Takuho',
+	},
+};
 ---
 
 <title>{title}</title>
-<meta name='description' content={description} />
-<link rel='canonical' href={canonical} />
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
 
-<!-- Open Graph -->
-<meta property='og:title' content={title} />
-<meta property='og:description' content={description} />
-<meta property='og:image' content={new URL(ogImage, Astro.site)} />
-<meta property='og:url' content={canonical} />
-<meta property='og:type' content='website' />
+<!-- Open Graph / Facebook / Discord -->
+<meta property="og:site_name" content="hrtk92.dev" />
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:alt" content={title} />
+<meta property="og:locale" content="ja_JP" />
 
-<!-- Twitter Card -->
-<meta name='twitter:card' content='summary_large_image' />
-<meta name='twitter:title' content={title} />
-<meta name='twitter:description' content={description} />
-<meta name='twitter:image' content={new URL(ogImage, Astro.site)} />
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalUrl} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+<meta name="twitter:image:alt" content={title} />
+
+<!-- Theme Color for Discord & Mobile Browser Header -->
+<meta name="theme-color" content="#0f172a" />
+
+<!-- Structured Data (JSON-LD) for Search Engines -->
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />

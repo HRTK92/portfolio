@@ -1,1 +1,42 @@
-@import "tailwindcss";
+:root {
+	--font-sans:
+		"Plus Jakarta Sans", "Zen Maru Gothic", -apple-system, BlinkMacSystemFont,
+		"Hiragino Sans", "BIZ UDPGothic", sans-serif;
+	--duration-move: 380ms;
+}
+
+html {
+	scroll-behavior: smooth;
+	font-family: var(--font-sans);
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-tap-highlight-color: transparent;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+/* Subtle Film Grain Noise Texture */
+.bg-noise {
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* View Transitions Optimization */
+::view-transition {
+	pointer-events: none;
+}
+
+::view-transition-group(*) {
+	animation-duration: var(--duration-move);
+	animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-old(*),
+	::view-transition-new(*),
+	::view-transition-group(*) {
+		animation-duration: 0s !important;
+	}
+}

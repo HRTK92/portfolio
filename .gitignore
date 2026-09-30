@@ -25,3 +25,7 @@ pnpm-debug.log*
 
 # cloudflare worker setting folder
 .wrangler/
+
+# agent & skills
+.agents/
+skills-lock.json
