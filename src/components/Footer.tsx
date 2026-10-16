@@ -5,7 +5,7 @@ export default function Footer() {
 
 	const socialLinks = [
 		{ name: 'GitHub', url: 'https://github.com/HRTK92' },
-		{ name: 'X', url: 'https://x.com' },
+		{ name: 'note', url: 'https://note.com/hrtk92' },
 		{ name: 'Mail', url: 'mailto:me@hrtk92.dev' },
 	];
 
