@@ -4,9 +4,9 @@ import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
 	const navLinks = [
-		{ name: 'About', href: '#about' },
-		{ name: 'Skills', href: '#skills' },
-		{ name: 'Projects', href: '#projects' },
+		{ name: 'About', href: '/#about' },
+		{ name: 'Skills', href: '/#skills' },
+		{ name: 'Projects', href: '/#projects' },
 	];
 
 	return (
@@ -22,7 +22,7 @@ export default function Navbar() {
 						<Magnetic key={link.name} strength={0.2}>
 							<a
 								href={link.href}
-								className="rounded-full px-3 py-1.5 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 transition-colors hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-white/10"
+								className="rounded-full px-3 py-1.5 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 transition-colors hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
 							>
 								{link.name}
 							</a>

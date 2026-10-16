@@ -111,6 +111,9 @@ export default function Skills() {
 														: `${ICON_BASE_URL}/${skill.iconName}.svg`
 												}
 												alt={skill.name}
+												width="24"
+												height="24"
+												decoding="async"
 												className={`h-full w-full object-contain ${
 													skill.iconName === 'vercel' ? 'dark:invert' : ''
 												}`}

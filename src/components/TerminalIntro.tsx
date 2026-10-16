@@ -15,12 +15,19 @@ export default function TerminalIntro() {
 	useEffect(() => {
 		// 初回来訪時のみ再生（セッション中1回）
 		const hasVisited = sessionStorage.getItem('visited_intro');
-		if (hasVisited) {
+		const prefersReducedMotion = window.matchMedia(
+			'(prefers-reduced-motion: reduce)',
+		).matches;
+
+		if (hasVisited || prefersReducedMotion) {
+			sessionStorage.setItem('visited_intro', 'true');
 			return;
 		}
 
 		setIsVisible(true);
 		document.body.style.overflow = 'hidden';
+
+		const timers: ReturnType<typeof setTimeout>[] = [];
 
 		// 0% から 99% までCLIのgit clone風にカウントアップ
 		let current = 0;
@@ -31,13 +38,15 @@ export default function TerminalIntro() {
 				setProgress(99);
 				clearInterval(progressInterval);
 
-				setTimeout(() => {
+				const timerReady = setTimeout(() => {
 					setIsReady(true);
 				}, 150);
+				timers.push(timerReady);
 
-				setTimeout(() => {
+				const timerFinish = setTimeout(() => {
 					finishIntro();
 				}, 1000);
+				timers.push(timerFinish);
 			} else {
 				setProgress(current);
 			}
@@ -45,6 +54,9 @@ export default function TerminalIntro() {
 
 		return () => {
 			clearInterval(progressInterval);
+			for (const t of timers) {
+				clearTimeout(t);
+			}
 			document.body.style.overflow = '';
 		};
 	}, [finishIntro]);

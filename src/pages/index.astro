@@ -12,8 +12,8 @@ import Layout from '../layouts/Layout.astro';
 
     <Skills client:visible={{ rootMargin: '200px' }} />
 
-    <Projects client:load />
+    <Projects client:visible={{ rootMargin: '200px' }} />
 
-    <Footer client:idle />
+    <Footer client:visible />
   </div>
 </Layout>

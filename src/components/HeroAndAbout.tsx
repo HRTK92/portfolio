@@ -46,7 +46,10 @@ export default function HeroAndAbout() {
 					<div className="relative h-24 w-24 sm:h-28 sm:w-28 rounded-full border-2 border-white/80 dark:border-white/20 bg-white/70 dark:bg-slate-900/80 shadow-xl backdrop-blur-xl shrink-0 p-1.5">
 						<img
 							src="https://api.dicebear.com/7.x/notionists/svg?seed=portfolio"
-							alt="Avatar"
+							alt="Takuho's Avatar"
+							width="112"
+							height="112"
+							fetchPriority="high"
 							className="h-full w-full rounded-full object-cover"
 						/>
 					</div>

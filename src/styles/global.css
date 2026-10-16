@@ -34,6 +34,10 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto !important;
+	}
+
 	::view-transition-old(*),
 	::view-transition-new(*),
 	::view-transition-group(*) {

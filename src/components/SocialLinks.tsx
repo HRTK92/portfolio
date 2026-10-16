@@ -98,7 +98,7 @@ export default function SocialLinks() {
 							href={link.url}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/80 dark:border-white/10 bg-white/60 dark:bg-slate-900/60 text-slate-600 dark:text-slate-300 shadow-[0_4px_12px_rgba(0,0,0,0.03)] backdrop-blur-md transition-colors duration-200 hover:bg-white dark:hover:bg-slate-800 hover:text-blue-500 dark:hover:text-blue-400"
+							className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/80 dark:border-white/10 bg-white/60 dark:bg-slate-900/60 text-slate-600 dark:text-slate-300 shadow-[0_4px_12px_rgba(0,0,0,0.03)] backdrop-blur-md transition-colors duration-200 hover:bg-white dark:hover:bg-slate-800 hover:text-blue-500 dark:hover:text-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
 							aria-label={link.name}
 						>
 							{link.icon}

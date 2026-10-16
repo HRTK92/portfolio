@@ -30,7 +30,7 @@ export default function Footer() {
 							href={link.url}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="rounded-full border border-slate-200/70 dark:border-white/10 bg-white/60 dark:bg-white/5 px-3 py-1 text-slate-600 dark:text-slate-300 hover:text-blue-500 transition-colors"
+							className="rounded-full border border-slate-200/70 dark:border-white/10 bg-white/60 dark:bg-white/5 px-3 py-1 text-slate-600 dark:text-slate-300 hover:text-blue-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
 						>
 							{link.name}
 						</a>
@@ -54,7 +54,7 @@ export default function Footer() {
 							href="https://github.com/HRTK92/portfolio"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="hover:text-blue-500 dark:hover:text-blue-400 transition-colors inline-flex items-center gap-1.5"
+							className="hover:text-blue-500 dark:hover:text-blue-400 transition-colors inline-flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
