@@ -15,7 +15,8 @@
 		"check": "biome check --write && astro check",
 		"typecheck": "astro check",
 		"astro": "astro",
-		"generate-types": "wrangler types"
+		"generate-types": "wrangler types",
+		"deploy": "pnpm run build && wrangler deploy"
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.12",

@@ -25,6 +25,9 @@ pnpm-debug.log*
 
 # cloudflare worker setting folder
 .wrangler/
+.dev.vars*
+!.dev.vars.example
+!.env.example
 
 # agent & skills
 .agents/
