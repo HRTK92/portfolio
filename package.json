@@ -18,27 +18,27 @@
 		"generate-types": "wrangler types"
 	},
 	"dependencies": {
-		"@astrojs/check": "^0.9.10",
-		"@astrojs/cloudflare": "^14.3.4",
-		"@astrojs/react": "^7.0.1",
+		"@astrojs/check": "^0.9.12",
+		"@astrojs/cloudflare": "^14.4.4",
+		"@astrojs/react": "^7.1.2",
 		"@astrojs/sitemap": "^3.7.4",
 		"@types/react": "^19.3.0",
 		"@types/react-dom": "^19.3.0",
-		"astro": "^7.3.8",
-		"motion": "^14.2.0",
+		"astro": "^7.4.5",
+		"motion": "^14.9.0",
 		"react": "^19.3.1",
 		"react-dom": "^19.3.1",
-		"wrangler": "^4.151.0"
+		"wrangler": "^4.156.2"
 	},
 	"overrides": {
 		"vite": "^8"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.15",
-		"@unocss/astro": "^66.11.0",
-		"@unocss/preset-wind3": "^66.11.0",
-		"@unocss/reset": "^66.11.0",
+		"@biomejs/biome": "2.6.4",
+		"@unocss/astro": "^66.12.0",
+		"@unocss/preset-wind3": "^66.12.0",
+		"@unocss/reset": "^66.12.0",
 		"typescript": "^6.0.3",
-		"unocss": "^66.11.0"
+		"unocss": "^66.12.0"
 	}
 }
