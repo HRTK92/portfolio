@@ -28,4 +28,5 @@ pnpm-debug.log*
 
 # agent & skills
 .agents/
+.hallmark/
 skills-lock.json

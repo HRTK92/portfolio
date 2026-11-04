@@ -27,19 +27,32 @@ export default defineConfig({
 	theme: {
 		fontFamily: {
 			sans: 'var(--font-sans)',
-			mono: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+			display: 'var(--font-display)',
+			body: 'var(--font-body)',
+			mono: 'var(--font-outlier)',
+		},
+		colors: {
+			paper: 'var(--color-paper)',
+			'paper-2': 'var(--color-paper-2)',
+			'paper-3': 'var(--color-paper-3)',
+			ink: 'var(--color-ink)',
+			'ink-2': 'var(--color-ink-2)',
+			muted: 'var(--color-muted)',
+			rule: 'var(--color-rule)',
+			'rule-2': 'var(--color-rule-2)',
+			accent: 'var(--color-accent)',
+			'accent-ink': 'var(--color-accent-ink)',
+			focus: 'var(--color-focus)',
+			success: 'var(--color-success)',
+			error: 'var(--color-error)',
 		},
 	},
 	rules: [
-		['shadow-xs', { 'box-shadow': '0 1px 2px 0 rgba(0, 0, 0, 0.05)' }],
+		['shadow-xs', { 'box-shadow': 'var(--shadow-card)' }],
+		['shadow-card', { 'box-shadow': 'var(--shadow-card)' }],
+		['shadow-float', { 'box-shadow': 'var(--shadow-float)' }],
+		['shadow-bento', { 'box-shadow': 'var(--shadow-bento)' }],
 		['rounded-xs', { 'border-radius': '0.125rem' }],
-		[
-			'backdrop-blur-xs',
-			{
-				'-webkit-backdrop-filter': 'blur(4px)',
-				'backdrop-filter': 'blur(4px)',
-			},
-		],
 	],
 	shortcuts: [
 		[

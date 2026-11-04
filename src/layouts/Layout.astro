@@ -18,7 +18,7 @@ const { title, description, ogImage, type } = Astro.props;
 ---
 
 <!doctype html>
-<html lang='ja'>
+<html lang='ja' class='overflow-x-clip'>
   <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width' />
@@ -28,9 +28,8 @@ const { title, description, ogImage, type } = Astro.props;
     <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
     <link rel='preconnect' href='https://cdn.jsdelivr.net' crossorigin />
-    <link rel='dns-prefetch' href='https://api.dicebear.com' />
     <link
-      href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Zen+Maru+Gothic:wght@400;500;700&display=swap'
+      href='https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Zen+Maru+Gothic:wght@400;500;700&display=swap'
       rel='stylesheet'
     />
     <SEO title={title} description={description} ogImage={ogImage} type={type} />
@@ -51,7 +50,7 @@ const { title, description, ogImage, type } = Astro.props;
       src='https://umami.hrtk92.dev/script.js'
       data-website-id='9fbe253b-bee7-4747-91ee-fed5c8f60c4e'></script>
   </head>
-  <body class='relative min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 selection:bg-blue-500/20 selection:text-blue-600 dark:selection:bg-blue-400/20 dark:selection:text-blue-300 transition-colors duration-300 antialiased'>
+  <body class='relative min-h-screen overflow-x-clip bg-paper text-ink transition-colors duration-300 antialiased'>
     <TerminalIntro client:load />
 
     <Navbar client:load transition:persist />

@@ -32,7 +32,10 @@ export default function AnimatedBackground() {
 	}, [mouseX, mouseY]);
 
 	return (
-		<div className="fixed inset-0 -z-10 overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-500">
+		<div className="fixed inset-0 -z-10 overflow-hidden bg-paper transition-colors duration-500">
+			{/* Subtle single-hue ambient field */}
+			<div className="bg-ambient-field pointer-events-none absolute inset-0" />
+
 			{/* Spotlight follow glow (only for fine-pointer devices like desktop mice) */}
 			{hasFinePointer && !shouldReduceMotion && (
 				<motion.div
@@ -42,58 +45,17 @@ export default function AnimatedBackground() {
 						translateX: '-50%',
 						translateY: '-50%',
 						backgroundImage:
-							'radial-gradient(circle, var(--tw-gradient-stops, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.08) 40%, transparent 70%))',
+							'radial-gradient(circle, color-mix(in oklab, var(--color-accent) 12%, transparent) 0%, transparent 68%)',
 					}}
-					className="pointer-events-none absolute h-[600px] w-[600px] rounded-full blur-3xl"
+					className="pointer-events-none absolute h-[560px] w-[560px] rounded-full"
 				/>
 			)}
 
-			{/* Soft ambient aurora orbs (paused under prefers-reduced-motion) */}
-			<motion.div
-				animate={
-					shouldReduceMotion
-						? undefined
-						: {
-								x: [0, 80, 0],
-								y: [0, -40, 0],
-								scale: [1, 1.15, 1],
-							}
-				}
-				transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
-				className="absolute top-[5%] left-[15%] h-[40vw] w-[40vw] rounded-full bg-blue-300/30 dark:bg-blue-600/10 mix-blend-multiply dark:mix-blend-screen blur-[120px]"
-			/>
-			<motion.div
-				animate={
-					shouldReduceMotion
-						? undefined
-						: {
-								x: [0, -80, 0],
-								y: [0, 80, 0],
-								scale: [1, 1.2, 1],
-							}
-				}
-				transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
-				className="absolute top-[35%] right-[10%] h-[35vw] w-[35vw] rounded-full bg-purple-300/25 dark:bg-purple-600/10 mix-blend-multiply dark:mix-blend-screen blur-[120px]"
-			/>
-			<motion.div
-				animate={
-					shouldReduceMotion
-						? undefined
-						: {
-								x: [0, 50, 0],
-								y: [0, 100, 0],
-								scale: [1, 1.1, 1],
-							}
-				}
-				transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
-				className="absolute bottom-[-5%] left-[25%] h-[45vw] w-[45vw] rounded-full bg-teal-300/20 dark:bg-emerald-600/10 mix-blend-multiply dark:mix-blend-screen blur-[130px]"
-			/>
-
 			{/* Minimal micro-dot grid for depth */}
-			<div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+			<div className="bg-grid-dots pointer-events-none absolute inset-0" />
 
 			{/* Subtle tactile film grain overlay */}
-			<div className="bg-noise absolute inset-0 pointer-events-none" />
+			<div className="bg-noise pointer-events-none absolute inset-0" />
 		</div>
 	);
 }

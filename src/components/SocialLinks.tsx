@@ -38,6 +38,7 @@ export default function SocialLinks() {
 					strokeWidth="2"
 					strokeLinecap="round"
 					strokeLinejoin="round"
+					aria-hidden="true"
 				>
 					<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
 					<path d="M9 18c-4.51 2-5-2-7-2" />
@@ -54,6 +55,7 @@ export default function SocialLinks() {
 					height="18"
 					viewBox="110 110 273 273"
 					fill="currentColor"
+					aria-hidden="true"
 				>
 					<path d="m139.57,142.06c41.19,0,97.6-2.09,138.1-1.04,54.34,1.39,74.76,25.06,75.45,83.53.69,33.06,0,127.73,0,127.73h-58.79c0-82.83.35-96.5,0-122.6-.69-22.97-7.25-33.92-24.9-36.01-18.69-2.09-71.07-.35-71.07-.35v158.96h-58.79v-210.22Z" />
 				</svg>
@@ -73,6 +75,7 @@ export default function SocialLinks() {
 					strokeWidth="2"
 					strokeLinecap="round"
 					strokeLinejoin="round"
+					aria-hidden="true"
 				>
 					<rect width="20" height="16" x="2" y="4" rx="2" />
 					<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
@@ -89,7 +92,7 @@ export default function SocialLinks() {
 				animate="visible"
 				className="pointer-events-auto flex flex-col items-center gap-4"
 			>
-				<div className="h-10 w-px bg-gradient-to-b from-transparent to-slate-300 dark:to-white/20" />
+				<div className="h-10 w-px bg-rule" />
 
 				{links.map((link) => (
 					<Magnetic key={link.name} strength={0.3}>
@@ -98,7 +101,7 @@ export default function SocialLinks() {
 							href={link.url}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/80 dark:border-white/10 bg-white/60 dark:bg-slate-900/60 text-slate-600 dark:text-slate-300 shadow-[0_4px_12px_rgba(0,0,0,0.03)] backdrop-blur-md transition-colors duration-200 hover:bg-white dark:hover:bg-slate-800 hover:text-blue-500 dark:hover:text-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+							className="flex h-11 w-11 items-center justify-center rounded-full border border-rule bg-paper-2 text-ink-2 shadow-card transition-colors duration-200 hover:bg-paper-3 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
 							aria-label={link.name}
 						>
 							{link.icon}
@@ -106,7 +109,7 @@ export default function SocialLinks() {
 					</Magnetic>
 				))}
 
-				<div className="h-10 w-px bg-gradient-to-t from-transparent to-slate-300 dark:to-white/20" />
+				<div className="h-10 w-px bg-rule" />
 			</motion.div>
 		</div>
 	);

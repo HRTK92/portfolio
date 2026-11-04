@@ -1,9 +1,12 @@
-:root {
-	--font-sans:
-		"Plus Jakarta Sans", "Zen Maru Gothic", -apple-system, BlinkMacSystemFont,
-		"Hiragino Sans", "BIZ UDPGothic", sans-serif;
-	--duration-move: 380ms;
-}
+/* Hallmark · shape: kept · genre: modern-minimal · theme: brand · redesign: polish
+ * paper: oklch(98% 0.005 250) · accent: oklch(52% 0.18 252) · display: Plus Jakarta Sans · body: Plus Jakarta Sans
+ * hero: kept · nav: kept · footer: kept · signature: interactive spotlight cards and terminal intro
+ * axes: light/geometric-sans/cool · posture: restrained · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P5 H5 E5 S4 R5 V5 · weakest: S, preserved the original layout and interactive components while stripping every AI-generated tell */
+/* Hallmark · reworded "© {currentYear} Takuho. All rights reserved." to "© {currentYear} Takuho." · 19 names the stock footer phrase */
+/* Hallmark · reworded "TypeScript · Python · Cloudflare" to "TypeScript / Python / Cloudflare" · 63 names middle-dot meta strings */
+@import url("./tokens.css");
+@import url("./base.css");
 
 html {
 	scroll-behavior: smooth;
@@ -14,13 +17,45 @@ html {
 	-webkit-tap-highlight-color: transparent;
 }
 
-body {
-	overflow-x: hidden;
-}
-
 /* Subtle Film Grain Noise Texture */
 .bg-noise {
 	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Micro-dot Grid & Subtle Ambient Field (tokenized, no colour literals in class strings) */
+.bg-grid-dots {
+	background-image: radial-gradient(
+		color-mix(in oklab, var(--color-ink) 7%, transparent) 1px,
+		transparent 1px
+	);
+	background-size: 24px 24px;
+}
+
+.bg-ambient-field {
+	background-image:
+		radial-gradient(
+			55% 45% at 20% 15%,
+			color-mix(in oklab, var(--color-accent) 9%, transparent),
+			transparent 70%
+		),
+		radial-gradient(
+			50% 45% at 80% 75%,
+			color-mix(in oklab, var(--color-accent) 6%, transparent),
+			transparent 70%
+		);
+}
+
+/* Interactive states for buttons and links */
+a:active,
+button:active {
+	transform: translateY(1px);
+}
+
+button:disabled,
+button[aria-disabled="true"] {
+	opacity: 0.5;
+	cursor: not-allowed;
+	transform: none;
 }
 
 /* View Transitions Optimization */
@@ -28,9 +63,23 @@ body {
 	pointer-events: none;
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation: none;
+	mix-blend-mode: normal;
+}
+
+html[data-magicui-theme-vt="active"]::view-transition-new(root) {
+	clip-path: var(--magicui-theme-vt-clip-from);
+}
+
+html[data-magicui-theme-vt="active"]::view-transition-group(root) {
+	animation-duration: var(--magicui-theme-toggle-vt-duration);
+}
+
 ::view-transition-group(*) {
 	animation-duration: var(--duration-move);
-	animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+	animation-timing-function: var(--ease-out);
 }
 
 @media (prefers-reduced-motion: reduce) {

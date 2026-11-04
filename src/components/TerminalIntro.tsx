@@ -7,29 +7,39 @@ export default function TerminalIntro() {
 	const [isReady, setIsReady] = useState(false);
 
 	const finishIntro = useCallback(() => {
-		sessionStorage.setItem('visited_intro', 'true');
 		setIsVisible(false);
 		document.body.style.overflow = '';
 	}, []);
 
+	// Escapeキーでのスキップ機能
 	useEffect(() => {
-		// 初回来訪時のみ再生（セッション中1回）
-		const hasVisited = sessionStorage.getItem('visited_intro');
-		const prefersReducedMotion = window.matchMedia(
-			'(prefers-reduced-motion: reduce)',
-		).matches;
+		if (!isVisible) return;
 
-		if (hasVisited || prefersReducedMotion) {
-			sessionStorage.setItem('visited_intro', 'true');
+		const handleKeyDown = (e: KeyboardEvent) => {
+			if (e.key === 'Escape') {
+				finishIntro();
+			}
+		};
+
+		window.addEventListener('keydown', handleKeyDown);
+		return () => window.removeEventListener('keydown', handleKeyDown);
+	}, [isVisible, finishIntro]);
+
+	useEffect(() => {
+		if (sessionStorage.getItem('visited')) {
+			return;
+		}
+
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+			sessionStorage.setItem('visited', 'true');
 			return;
 		}
 
 		setIsVisible(true);
+		sessionStorage.setItem('visited', 'true');
 		document.body.style.overflow = 'hidden';
 
 		const timers: ReturnType<typeof setTimeout>[] = [];
-
-		// 0% から 99% までCLIのgit clone風にカウントアップ
 		let current = 0;
 		const progressInterval = setInterval(() => {
 			current += Math.floor(Math.random() * 6) + 3;
@@ -73,57 +83,53 @@ export default function TerminalIntro() {
 					exit={{
 						opacity: 0,
 						scale: 1.02,
-						filter: 'blur(8px)',
-						transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+						transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
 					}}
-					className="fixed inset-0 z-100 flex items-center justify-center bg-slate-50/70 dark:bg-slate-950/80 backdrop-blur-2xl px-4"
+					className="fixed inset-0 z-100 flex items-center justify-center bg-paper/95 px-4"
 				>
 					{/* Skip button in top right */}
 					<button
 						type="button"
 						onClick={finishIntro}
-						className="absolute top-6 right-6 cursor-pointer rounded-full border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-slate-900/60 px-3.5 py-1 text-xs text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 shadow-xs backdrop-blur-md transition-all font-mono"
+						className="absolute top-6 right-6 cursor-pointer rounded-full border border-rule bg-paper-2 px-3.5 py-1 text-xs font-medium text-muted hover:text-ink hover:bg-paper-3 shadow-xs transition-colors"
 					>
-						[Skip ESC]
+						Skip (Esc)
 					</button>
 
-					{/* Terminal Window (White & Warm Aesthetic) */}
+					{/* Terminal Window */}
 					<motion.div
 						initial={{ opacity: 0, y: 15, scale: 0.96 }}
 						animate={{ opacity: 1, y: 0, scale: 1 }}
 						transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-						className="relative w-full max-w-lg rounded-3xl border border-white/80 dark:border-white/15 bg-white/90 dark:bg-slate-900/85 p-5 sm:p-7 shadow-[0_20px_50px_rgba(0,0,0,0.06)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] backdrop-blur-2xl text-xs sm:text-sm overflow-hidden"
+						className="relative w-full max-w-lg rounded-3xl border border-rule bg-paper-2 p-5 sm:p-7 shadow-float text-xs sm:text-sm overflow-hidden"
 					>
-						{/* Ambient soft glow on top */}
-						<div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-40 w-80 rounded-full bg-gradient-to-r from-blue-200/40 via-purple-200/30 to-rose-200/30 blur-2xl" />
-
 						{/* Window Header */}
-						<div className="relative flex items-center justify-between border-b border-slate-100 dark:border-white/10 pb-3.5 mb-4">
-							<div className="flex items-center gap-2">
-								<div className="h-3 w-3 rounded-full bg-rose-400/80 border border-rose-500/20" />
-								<div className="h-3 w-3 rounded-full bg-amber-400/80 border border-amber-500/20" />
-								<div className="h-3 w-3 rounded-full bg-emerald-400/80 border border-emerald-500/20" />
+						<div className="relative flex items-center justify-between border-b border-rule pb-3.5 mb-4">
+							<div className="flex items-center gap-1.5">
+								<span className="h-2.5 w-2.5 rounded-full bg-rule-2" />
+								<span className="h-2.5 w-2.5 rounded-full bg-rule-2" />
+								<span className="h-2.5 w-2.5 rounded-full bg-rule-2" />
 							</div>
-							<div className="flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-400 font-medium font-mono">
-								<span>takuho@portfolio: ~</span>
-							</div>
-							<div className="w-12" />
+							<code className="text-xs text-muted font-mono">
+								takuho@portfolio: ~
+							</code>
+							<div className="w-10" />
 						</div>
 
 						{/* Terminal Output (Real CLI Text Format) */}
-						<div className="relative flex flex-col gap-2 min-h-32 font-mono text-xs sm:text-xs leading-relaxed">
-							<div className="text-slate-700 dark:text-slate-200 flex items-center gap-2">
-								<span className="text-blue-500 font-bold">❯</span>
-								<span>git clone https://github.com/HRTK92/portfolio.git</span>
+						<div className="relative flex flex-col gap-2 min-h-32 font-mono text-xs leading-relaxed">
+							<div className="text-ink flex items-center gap-2">
+								<span className="text-accent font-bold">❯</span>
+								<code>git clone https://github.com/HRTK92/portfolio.git</code>
 							</div>
 
-							<div className="text-slate-500 dark:text-slate-400 pl-4 space-y-1">
-								<div>Cloning into 'portfolio'...</div>
+							<div className="text-muted pl-4 space-y-1">
+								<div>Cloning into &lsquo;portfolio&rsquo;…</div>
 								<div>remote: Enumerating objects: 128, done.</div>
 								<div>remote: Counting objects: 100% (128/128), done.</div>
-								<div className="text-slate-700 dark:text-slate-300 font-medium">
+								<div className="text-ink-2 font-medium">
 									Receiving objects:{' '}
-									<span className="text-blue-600 dark:text-blue-400 font-bold tabular-nums">
+									<span className="text-accent font-bold tabular-nums">
 										{progress}%
 									</span>{' '}
 									({currentObjects}/128), {currentKb} KiB | 2.14 MiB/s
@@ -134,16 +140,29 @@ export default function TerminalIntro() {
 								<motion.div
 									initial={{ opacity: 0, x: -3 }}
 									animate={{ opacity: 1, x: 0 }}
-									className="text-emerald-600 dark:text-emerald-400 pl-4 font-medium flex items-center gap-1.5 pt-0.5"
+									className="text-success pl-4 font-medium flex items-center gap-1.5 pt-0.5"
 								>
-									<span>✔</span>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="14"
+										height="14"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										strokeWidth="2.5"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										aria-hidden="true"
+									>
+										<path d="M20 6 9 17l-5-5" />
+									</svg>
 									<span>me.hrtk92.dev is ready. Welcome!</span>
 								</motion.div>
 							)}
 
 							<div className="flex items-center gap-2 mt-1">
-								<span className="text-purple-400 font-bold">❯</span>
-								<span className="inline-block h-3.5 w-1.5 rounded-xs bg-slate-400 dark:bg-slate-300 animate-pulse" />
+								<span className="text-accent font-bold">❯</span>
+								<span className="inline-block h-3.5 w-1.5 rounded-xs bg-muted animate-pulse" />
 							</div>
 						</div>
 					</motion.div>
